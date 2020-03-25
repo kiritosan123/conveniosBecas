@@ -1,3 +1,14 @@
+<?php
+
+    session_start();
+    require_once "../../clases/Conexion.php";
+    $idUsuario = $_SESSION['idUsuario'];
+    $conexion  = new Conectar();
+    $conexion = $conexion->conexion();
+    
+
+?>
+
 <div class="table-responsive">
     <table class="table table-hover table-dark" id="tablaCategoriasDataTable">
         <thead>
@@ -9,20 +20,34 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td style="text-align: center">
+
+        <?php
+
+            $sql = "SELECT id_categoria, nombre, fechaInsert FROM t_categorias WHERE id_usuario = '$idUsuario'";
+
+            $result = mysqli_query($conexion, $sql);
+
+            while($mostrar = mysqli_fetch_array($result)){
+                $id_categoria = $mostrar['id_categoria'];
+        ?>
+
+            <tr style="text-align: center">
+                <td><?php echo $mostrar['nombre']; ?></td>
+                <td><?php echo $mostrar['fechaInsert']; ?></td>
+                <td>
                     <span class="btn btn-warning btn-sm">
                         <span class="fas fa-edit"></span>
                     </span>
                 </td>
-                <td style="text-align: center">
+                <td>
                     <span class="btn btn-danger btn-sm">
                         <spanc class="fas fa-trash-alt"></spanc>
                     </span>
                 </td>
             </tr>
+            <?php
+                }
+            ?>
         </tbody>
     </table>
 </div>
