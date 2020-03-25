@@ -12,6 +12,7 @@ function agregarCategoria() {
                 respuesta = respuesta.trim();
 
                 if (respuesta == 1) {
+                    $('#tablaCategorias').load("categorias/tablaCategoria.php");
                     $('#nombreCategoria').val("");
                     swal(":D", "Agregado con exito", "success");
                 } else {
@@ -20,5 +21,44 @@ function agregarCategoria() {
             }
 
         });
+    }
+}
+
+function eliminarCategorias(idCategoria){
+    idCategoria = parseInt(idCategoria);
+    if(idCategoria < 1){
+        swal("No tienes Id de Categoria");
+        return false;
+    }else{
+        //*************************
+        swal({
+            title: "Esta seguro de eliminar esta Categoría?",
+            text: "Una ves eliminada, no podra recuperarse!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    type: "POST",
+                    data: "idCategoria=" + idCategoria,
+                    url : "../procesos/categorias/eliminarCategoria.php",
+                    success:function(respuesta){
+                        respuesta = respuesta.trim();
+                        
+                        if(respuesta==1){
+                            $('#tablaCategorias').load("categorias/tablaCategoria.php");
+                            swal("Eliminado con Exito!", {
+                                icon: "success",
+                            });
+                        }else{
+                            swal(":(","Fallor al Eliminar","Error");
+                        }
+                    }
+                });
+            } 
+          }); 
+        //++++++++++++++++++++++++++++
     }
 }

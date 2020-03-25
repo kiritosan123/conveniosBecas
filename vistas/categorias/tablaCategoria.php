@@ -28,7 +28,7 @@
             $result = mysqli_query($conexion, $sql);
 
             while($mostrar = mysqli_fetch_array($result)){
-                $id_categoria = $mostrar['id_categoria'];
+                $idCategoria = $mostrar['id_categoria'];
         ?>
 
             <tr style="text-align: center">
@@ -40,7 +40,7 @@
                     </span>
                 </td>
                 <td>
-                    <span class="btn btn-danger btn-sm">
+                    <span class="btn btn-danger btn-sm" onclick="eliminarCategorias('<?php echo $idCategoria ?>')">
                         <spanc class="fas fa-trash-alt"></spanc>
                     </span>
                 </td>

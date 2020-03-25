@@ -52,6 +52,7 @@ if (isset($_SESSION['usuario'])) {
         include "footer.php";
     ?>
 
+    <!--Dependencias de categorias, todas las funciones js de categorias-->
     <script src="../js/categorias.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {

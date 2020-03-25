@@ -16,6 +16,19 @@
 
             return $respuesta;
         }
+
+        public function eliminarCategoria($idCategoria){
+            $conexion = Conectar::conexion();
+
+            $sql = "DELETE FROM t_categorias WHERE id_categoria = ?";
+            $query = $conexion->prepare($sql);
+            $query->bind_param('i', $idCategoria);
+            
+            $respuesta = $query->execute();
+            $query->close();
+
+            return $respuesta;
+        }
     }
 
 ?>
