@@ -43,18 +43,24 @@ if (isset($_SESSION['usuario'])) {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
+                    <button type="button" class="btn btn-primary" id="btnGuardarCategoria">Guardar</button>
                 </div>
             </div>
         </div>
     </div>
     <?php
-    include "footer.php";
+        include "footer.php";
     ?>
+
+    <script src="../js/categorias.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#tablaCategorias').load("categorias/tablaCategoria.php");
-        })
+
+            $('#btnGuardarCategoria').click(function(){
+                agregarCategoria();
+            });
+        });
     </script>
 
 <?php

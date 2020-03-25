@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table table-hover table-dark">
+    <table class="table table-hover table-dark" id="tablaCategoriasDataTable">
         <thead>
             <tr style="text-align: center">
                 <th>Nombre</th>
@@ -26,3 +26,9 @@
         </tbody>
     </table>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#tablaCategoriasDataTable').dataTable();
+    });
+</script>
