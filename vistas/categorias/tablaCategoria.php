@@ -35,7 +35,7 @@
                 <td><?php echo $mostrar['nombre']; ?></td>
                 <td><?php echo $mostrar['fechaInsert']; ?></td>
                 <td>
-                    <span class="btn btn-warning btn-sm">
+                    <span class="btn btn-warning btn-sm" onclick="obtenerDatosCategoria('<?php echo $idCategoria ?>')" data-toggle="modal" data-target="#modalActualizarCategoria">
                         <span class="fas fa-edit"></span>
                     </span>
                 </td>

@@ -62,3 +62,18 @@ function eliminarCategorias(idCategoria){
         //++++++++++++++++++++++++++++
     }
 }
+
+function obtenerDatosCategoria(idCategoria){
+    $.ajax({
+        type: "POST",
+        data: "idCategoria=" + idCategoria,
+        url : "../procesos/categorias/obtenerCategoria.php",
+        success:function(respuesta){
+            respuesta = jQuery.parseJSON(respuesta);
+            
+            $('#idCategoria').val(respuesta['idCategoria']);
+            $('#categoriaU').val(respuesta['nombreCategoria']);
+        }
+    
+    })
+}
