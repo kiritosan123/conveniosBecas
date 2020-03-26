@@ -77,3 +77,29 @@ function obtenerDatosCategoria(idCategoria){
     
     })
 }
+
+function actualizaCategoria(){
+    if($('#categoriaU').val() == ""){
+        swal("No hay Categoria¡¡¡");
+        return false;
+    }else{
+        $.ajax({
+            type: "POST",
+            data: $('#frmActualizaCategoria').serialize(),
+            url : "../procesos/categorias/actualizaCategoria.php",
+            success:function(respuesta){
+                respuesta = respuesta.trim();
+
+                if(respuesta == 1){
+                    $('#tablaCategorias').load("categorias/tablaCategoria.php");
+                    $('#btnCerrarUpdateCategoria').click();
+                    swal(":D","Actualizado con Éxito","success");
+                }
+                else{
+                    swal(":(","Fallo la Actualización","Error 322");
+                    console.log(respuesta);
+                }
+            }
+        })
+    }
+}

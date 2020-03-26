@@ -69,7 +69,7 @@ if (isset($_SESSION['usuario'])) {
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCerrarUpdateCategoria">Cerrar</button>
                     <button type="button" class="btn btn-warning" id="btnActualizaCategoria">Actualizar</button>
                 </div>
             </div>
@@ -90,6 +90,10 @@ if (isset($_SESSION['usuario'])) {
             $('#btnGuardarCategoria').click(function() {
                 agregarCategoria();
             });
+
+            $('#btnActualizaCategoria').click(function(){
+                actualizaCategoria();
+            });          
         });
     </script>
 
