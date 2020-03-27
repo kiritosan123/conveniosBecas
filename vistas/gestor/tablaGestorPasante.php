@@ -3,12 +3,12 @@
         <table class="table table-hover table-dark" id="tablaGestorDataTable">
             <thead>
                 <tr>
-                    <th>Nombre Convenio</th>
-                    <th>Obejtivo</th>
-                    <th>Fecha Suscripcion</th>
-                    <th>Vigencia</th>
-                    <th>Descargar</th>
-                    <th>Visulalizar</th>
+                    <th>C.I.</th>
+                    <th>Nombre Completo</th>
+                    <th>Celular</th>
+                    <th>Facultad</th>                    
+                    <th>Tesista/Pasante</th>
+                    <th>Fecha Presentacion</th>
                     <th>Eliminar</th>
                 </tr>
             </thead>
