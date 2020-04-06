@@ -32,7 +32,7 @@
                 <tr>
                     <th>Categoria</th>
                     <th>Nombre Convenio</th>
-                    <th>Tipo de Archivo</th>
+                    <th>Extensión de Archivo</th>
                     <th>Descargar</th>
                     <th>Visulalizar</th>                    
                     <th>Eliminar</th>
@@ -40,6 +40,12 @@
             </thead>
             <tbody>
                 <?php
+
+                    /*
+                        ARREGLO DE EXTENSIONES VALIDAS
+                    */
+                    $extensionesValidas = array('png', 'jpg', 'pdf', 'mp3', 'mp4');
+
                     while($mostrar = mysqli_fetch_array($result)){
 
                         $rutaDescarga = "../archivos/".$idUsuario."/".$mostrar['nombreArchivo'];
@@ -55,7 +61,20 @@
                             <span class="fas fa-download"></span>
                         </a>
                     </td>
-                    <td></td>
+                    <td>
+                        <?php
+                            for($i = 0; $i < count($extensionesValidas); $i++){
+                                if($extensionesValidas[$i] == $mostrar['tipoArchivo']){
+                        ?>
+                            <span class="btn btn-primary btn-sm" data-toggle="modal" data-target="#visualizarArchivo" onclick="obteberArchivoPorId('<?php echo $idArchivo  ?>')">
+                                <span class="fas fa-eye"></span>
+                            </span>
+                        <?php
+                                }
+                            }
+                        ?>
+
+                    </td>
                     <td>
                         <span class="btn btn-danger btn-sm" onclick="eliminarArchivo('<?php echo $idArchivo  ?>')">
                             <span class="fas fa-trash-alt"></span>
