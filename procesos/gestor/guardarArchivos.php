@@ -26,5 +26,5 @@
         echo 0;
     }
     
-    print_r($totalArhivos);
+    
 ?>
