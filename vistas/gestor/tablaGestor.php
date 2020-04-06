@@ -7,7 +7,7 @@
     $idUsuario = $_SESSION['idUsuario'];
     
     $sql = "SELECT 
-                    archivos.nombre AS idArchivo,
+                    archivos.id_archivo AS idArchivo,
                     usuario.nombre AS nombreUsuario,
                     categorias.nombre AS categoria,
                     archivos.nombre AS nombreArchivo,
@@ -30,6 +30,7 @@
         <table class="table table-hover table-dark" id="tablaGestorDataTable">
             <thead>
                 <tr>
+                    <th>Categoria</th>
                     <th>Nombre Convenio</th>
                     <th>Tipo de Archivo</th>
                     <th>Descargar</th>
@@ -40,11 +41,13 @@
             <tbody>
                 <?php
                     while($mostrar = mysqli_fetch_array($result)){
-                        
+
                         $rutaDescarga = "../archivos/".$idUsuario."/".$mostrar['nombreArchivo'];
                         $nombreArchivo = $mostrar['nombreArchivo'];
+                        $idArchivo = $mostrar['idArchivo'];
                 ?>
-                <tr>                    
+                <tr>         
+                    <td><?php  echo $mostrar['categoria']; ?></td>           
                     <td><?php echo $mostrar['nombreArchivo'];  ?></td>
                     <td><?php echo $mostrar['tipoArchivo'];  ?></td>
                     <td>
@@ -54,7 +57,7 @@
                     </td>
                     <td></td>
                     <td>
-                        <span class="btn btn-danger btn-sm">
+                        <span class="btn btn-danger btn-sm" onclick="eliminarArchivo('<?php echo $idArchivo  ?>')">
                             <span class="fas fa-trash-alt"></span>
                         </span>
                     </td>

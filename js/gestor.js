@@ -12,6 +12,7 @@ function agregarArchivosGestor() {
             respuesta = respuesta.trim();
 
                 if(respuesta == 1){
+                    $('#frmArchivos')[0].reset();
                     $('#tablaGestorArchivos').load("gestor/tablaGestor.php");                    
                     swal(":D","Agregado con Éxito","success");
                 }
@@ -22,4 +23,38 @@ function agregarArchivosGestor() {
         }
     });
 
+}
+
+function eliminarArchivo(idArchivo){
+    swal({
+        title: "Estas seguro de eliminar este archivo?",
+        text: "Una ves eliminado no podra recuperarse",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+    })
+    .then((willDelete) => {
+        if(willDelete){
+            $.ajax({
+                type: "POST",
+                data: "idArchivo=" + idArchivo,
+                url: "../procesos/gestor/eliminarArchivo.php",
+                success:function(respuesta){
+                    respuesta = respuesta.trim();
+                    if(respuesta == 1){
+                        $('#tablaGestorArchivos').load("gestor/tablaGestor.php");                    
+                        swal("Eliminado con Exito!", {
+                            icon: "success",
+                        });
+                    }else{
+                        swal("Error al Eliminar!", {
+                            icon: "error",
+                        });
+                        console.log(respuesta);
+                    }
+                    
+                }
+            });
+        }
+    });
 }
