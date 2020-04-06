@@ -39,7 +39,8 @@ if (isset($_SESSION['usuario'])) {
                         <label for="">Vigencia</label>
                         <input type="text" name="vigencia" id="idVigencia" class="form-control">
                         
-                        <input type="file" name="archivos" id="archivos" class="form-control">
+                        <input type="file" name="archivos[]" id="archivos" class="form-control" multiple="">
+                        <!--<input type="file" name="archivos" id="archivos" class="form-control" multiple="">-->
                     </form>
                 </div>
                 <div class="modal-footer">
