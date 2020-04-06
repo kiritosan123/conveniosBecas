@@ -8,6 +8,12 @@
 
     if($_FILES['archivos']['size'] > 0){
         
+        $carpetaUsuario = '../../archivos/'.$idUsuario;
+
+        if(!file_exists($carpetaUsuario)){
+            mkdir($carpetaUsuario, 0777, true);
+        }
+        //para saber cuantos archivos se an seleccionado
         $totalArhivos = count($_FILES['archivos']['name']);
 
         for($i = 0; $i < $totalArhivos; $i++){
@@ -15,13 +21,24 @@
             $nombreArchivo = $_FILES['archivos']['name'][$i];
             $explode = explode('.', $nombreArchivo);
             $tipoArchivo = array_pop($explode);
+            $rutaAlmacenamiento = $_FILES['archivos']['tmp_name'][$i];            
+            $rutaFinal = $carpetaUsuario."/".$nombreArchivo;
 
-            $rutaAlmacenamiento = $_FILES['archivos']['tmp_name'][$i];
-            $carpeta = '../../archivos/';
-            $rutaFinal = $carpeta.$nombreArchivo;
+            $datosRegistroArchivo = array(
+                                            "idUsuario"     => $idUsuario,
+                                            "idCategoria"   => $idCategoria,
+                                            "nombreArchivo" => $nombreArchivo,
+                                            "tipo"          => $tipoArchivo,
+                                            "ruta"          => $rutaFinal
+            );
 
-            echo move_uploaded_file($rutaAlmacenamiento, $rutaFinal);
+
+            if(move_uploaded_file($rutaAlmacenamiento, $rutaFinal)){
+                $respuesta = $Gestor->agregaRegistroArchivo($datosRegistroArchivo);
+            }
         }
+
+        echo $respuesta;
     }else{
         echo 0;
     }
