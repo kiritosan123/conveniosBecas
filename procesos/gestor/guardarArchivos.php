@@ -6,6 +6,13 @@
     $idCategoria = $_POST['categoriasArchivos'];
     $idUsuario = $_SESSION['idUsuario'];
 
+
+    // AGREGANDO PARA OBJETVIO, VIGENCIA
+    $objetivo = $_POST['objetivo'];
+    $vigencia = $_POST['vigencia'];
+    $fechaSuscripcion = explode("-", $_POST['fechaSuscripcion']);
+    $fechaSuscripcion = $fechaSuscripcion[2] . "-" . $fechaSuscripcion[1] . "-" . $fechaSuscripcion[0];
+
     if($_FILES['archivos']['size'] > 0){
         
         $carpetaUsuario = '../../archivos/'.$idUsuario;
@@ -25,11 +32,14 @@
             $rutaFinal = $carpetaUsuario."/".$nombreArchivo;
 
             $datosRegistroArchivo = array(
-                                            "idUsuario"     => $idUsuario,
-                                            "idCategoria"   => $idCategoria,
-                                            "nombreArchivo" => $nombreArchivo,
-                                            "tipo"          => $tipoArchivo,
-                                            "ruta"          => $rutaFinal
+                                            "idUsuario"        => $idUsuario,
+                                            "idCategoria"      => $idCategoria,
+                                            "nombreArchivo"    => $nombreArchivo,
+                                            "objetivo"         => $objetivo,
+                                            "fechaSuscripcion" => $fechaSuscripcion,
+                                            "vigencia"         => $vigencia,
+                                            "tipo"             => $tipoArchivo,
+                                            "ruta"             => $rutaFinal
             );
 
 

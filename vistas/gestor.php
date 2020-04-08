@@ -6,7 +6,7 @@ if (isset($_SESSION['usuario'])) {
 ?>
 
     <div class="jumbotron jumbotron-fluid">
-        <div class="container">
+        <div class="container-fluid">
             <h1 class="display-4">Gestor de Convenios</h1>
             <span class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarArchivos">
                 <span class="fas fa-plus-circle"></span>Agregar Convenios
@@ -33,11 +33,11 @@ if (isset($_SESSION['usuario'])) {
                         <div id="categoriasLoad"></div>
                         <hr>
                         <label for="">Objetivo</label>
-                        <input type="text" name="objetivo" id="idObjetivo" class="form-control">
+                        <input type="text" name="objetivo" id="objetivo" class="form-control">
                         <label for="">Fechas de Suscripción</label>
                         <input type="text" name="fechaSuscripcion" id="fechaSuscripcion" class="form-control" required="" readonly="">
                         <label for="">Vigencia</label>
-                        <input type="text" name="vigencia" id="idVigencia" class="form-control">
+                        <input type="text" name="vigencia" id="vigencia" class="form-control">
                         
                         <input type="file" name="archivos[]" id="archivos[]" class="form-control" multiple="">
                         <!--<input type="file" name="archivos" id="archivos" class="form-control" multiple="">-->

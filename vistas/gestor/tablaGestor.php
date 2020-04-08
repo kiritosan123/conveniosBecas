@@ -11,11 +11,14 @@
                     usuario.nombre AS nombreUsuario,
                     categorias.nombre AS categoria,
                     archivos.nombre AS nombreArchivo,
+                    archivos.objetivo AS objetivo,
+                    archivos.fechaSuscripcion AS fechaSuscripcion,
+                    archivos.vigencia AS vigencia,
                     archivos.tipo AS tipoArchivo,
                     archivos.ruta AS rutaArchivo,
                     archivos.fecha AS fecha
                 FROM
-                    t_archivos AS archivos
+                    t_archivo AS archivos
                         INNER JOIN
                     t_usuarios AS usuario ON archivos.id_usuario = usuario.id_usuario
                         INNER JOIN
@@ -32,7 +35,9 @@
                 <tr>
                     <th>Categoria</th>
                     <th>Nombre Convenio</th>
-                    <th>Extensión de Archivo</th>
+                    <th>Objetivo</th>
+                    <th>Fechas de Suscripción</th>
+                    <th>Vigencia</th>
                     <th>Descargar</th>
                     <th>Visulalizar</th>                    
                     <th>Eliminar</th>
@@ -55,7 +60,9 @@
                 <tr>         
                     <td><?php  echo $mostrar['categoria']; ?></td>           
                     <td><?php echo $mostrar['nombreArchivo'];  ?></td>
-                    <td><?php echo $mostrar['tipoArchivo'];  ?></td>
+                    <td><?php echo $mostrar['objetivo'];  ?></td>
+                    <td><?php echo $mostrar['fechaSuscripcion'];  ?></td>
+                    <td><?php echo $mostrar['vigencia'];  ?></td>
                     <td>
                         <a href="<?php echo $rutaDescarga; ?>" download="<?php echo $nombreArchivo; ?>" class="btn btn-success btn-sm">
                             <span class="fas fa-download"></span>

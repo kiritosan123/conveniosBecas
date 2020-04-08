@@ -5,12 +5,15 @@
     class Gestor extends Conectar {
         public function agregaRegistroArchivo($datos) {
             $conexion = Conectar::conexion();
-            $sql = "INSERT INTO t_archivos (id_usuario, id_categoria, nombre, tipo, ruta)
-                            VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO t_archivo (id_usuario, id_categoria, nombre, objetivo, fechaSuscripcion, vigencia, tipo, ruta)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             $query = $conexion->prepare($sql);
-            $query->bind_param("iisss", $datos['idUsuario'],
+            $query->bind_param("iissssss", $datos['idUsuario'],
                                         $datos['idCategoria'],
                                         $datos['nombreArchivo'],
+                                        $datos['objetivo'],
+                                        $datos['fechaSuscripcion'],
+                                        $datos['vigencia'],
                                         $datos['tipo'],
                                         $datos['ruta']);
             
@@ -21,7 +24,7 @@
 
         public function obtenNombreArchivo($idArchivo){
             $conexion = Conectar::conexion();
-            $sql = "SELECT nombre FROM t_archivos WHERE id_archivo = '$idArchivo'";
+            $sql = "SELECT nombre FROM t_archivo WHERE id_archivo = '$idArchivo'";
 
             $result = mysqli_query($conexion, $sql);
 
@@ -30,7 +33,7 @@
 
         public function eliminarRegistroArchivo($idArchivo){
             $conexion = Conectar::conexion();
-            $sql = "DELETE  FROM t_archivos WHERE id_archivo = ?";
+            $sql = "DELETE  FROM t_archivo WHERE id_archivo = ?";
             $query = $conexion->prepare($sql);
             $query->bind_param('i', $idArchivo);
             $respuesta = $query->execute();
@@ -41,7 +44,7 @@
         public function obtenerRutaArchivo($idArchivo){
             $conexion = Conectar::conexion();
 
-            $sql = "SELECT nombre, tipo FROM t_archivos WHERE id_archivo = '$idArchivo'";
+            $sql = "SELECT nombre, tipo FROM t_archivo WHERE id_archivo = '$idArchivo'";
             $result = mysqli_query($conexion, $sql);
             $datos = mysqli_fetch_array($result);
             $nombreArchivo = $datos['nombre'];
