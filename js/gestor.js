@@ -17,8 +17,7 @@ function agregarArchivosGestor() {
                     swal(":D","Agregado con Éxito","success");
                 }
                 else{
-                    swal(":(","Fallo al Agregar","Error 322");
-                    console.log(formData);
+                    swal(":(","Fallo al Agregar","Error 322");                    
                     console.log(respuesta);
                 }
         }

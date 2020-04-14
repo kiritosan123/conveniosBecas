@@ -22,7 +22,7 @@ if (isset($_SESSION['usuario'])) {
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Ingresar Datos</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -38,6 +38,8 @@ if (isset($_SESSION['usuario'])) {
                         <input type="text" name="fechaSuscripcion" id="fechaSuscripcion" class="form-control" required="" readonly="">
                         <label for="">Vigencia</label>
                         <input type="text" name="vigencia" id="vigencia" class="form-control">
+                        <label for="">Estado</label>
+                        <input type="text" name="estado" id="estado" class="form-control">
                         
                         <input type="file" name="archivos[]" id="archivos[]" class="form-control" multiple="">
                         <!--<input type="file" name="archivos" id="archivos" class="form-control" multiple="">-->

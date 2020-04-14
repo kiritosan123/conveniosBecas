@@ -5,17 +5,18 @@
     class Gestor extends Conectar {
         public function agregaRegistroArchivo($datos) {
             $conexion = Conectar::conexion();
-            $sql = "INSERT INTO t_archivo (id_usuario, id_categoria, nombre, objetivo, fechaSuscripcion, vigencia, tipo, ruta)
-                            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO t_archivo (id_usuario, id_categoria, nombre, objetivo, fechaSuscripcion, vigencia, tipo, ruta, estado)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $query = $conexion->prepare($sql);
-            $query->bind_param("iissssss", $datos['idUsuario'],
+            $query->bind_param("iisssssss", $datos['idUsuario'],
                                         $datos['idCategoria'],
                                         $datos['nombreArchivo'],
                                         $datos['objetivo'],
                                         $datos['fechaSuscripcion'],
                                         $datos['vigencia'],
                                         $datos['tipo'],
-                                        $datos['ruta']);
+                                        $datos['ruta'],
+                                        $datos['estado']);
             
             $respuesta = $query->execute();
             $query->close();
@@ -54,7 +55,11 @@
         }
 
         public function tipoArchivo($nombre, $extesion){
-            $idUsuario = $_SESSION['idUsuario'];
+            //      NOTA IMPORTANTE  IMPORTANTE
+            // HABILITAR CUANDO EXISTA MAS DE 1 USUARIO ... CASO CONTRARIO SIEMPRE SERA 1 EL VALOR DE idUsuario
+            // esto si...si el usuario no esta activo entonces no se podra hacer una previsualizacion del documento es por eso q lo pongo por defecto el valor de 1 ya  q suponemos q solo habra un usuario
+            //$idUsuario = $_SESSION['idUsuario'];
+            $idUsuario = "1";
 
             $ruta = "../archivos/".$idUsuario."/".$nombre;
 

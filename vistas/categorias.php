@@ -63,7 +63,7 @@ if (isset($_SESSION['usuario'])) {
                 </div>
                 <div class="modal-body">
                     <form action="" id="frmActualizaCategoria">
-                        <input type="text" name="idCategoria" id="idCategoria" hidden>
+                        <<input type="text" name="idCategoria" id="idCategoria" hidden>
                         <label>Categoria</label>
                         <input type="text" name="categoriaU" id="categoriaU" class="form-control">
                     </form>

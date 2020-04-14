@@ -2,7 +2,13 @@
 
     require_once "../../../clases/Usuario.php";
 
-    $password = sha1($_POST['password']);
+    //<!--METODO PARA ENCRIPTAR PASSWORD-->
+    //$password = sha1($_POST['password']);
+
+    //<!--METODO PARA SIN ENCRIPTAR-->
+    $password = $_POST['password'];
+
+
     $fechaSuscripcion = explode("-", $_POST['fechaSuscripcion']);
     $fechaSuscripcion = $fechaSuscripcion[2] . "-" . $fechaSuscripcion[1] . "-" . $fechaSuscripcion[0];
     
